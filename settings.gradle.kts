@@ -23,3 +23,4 @@ rootProject.name = "MeteoSaver"
 include(":app")
 include(":ui")
 include(":domain")
+include(":data")

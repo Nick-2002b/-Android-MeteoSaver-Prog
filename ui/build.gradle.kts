@@ -7,6 +7,9 @@ android {
     namespace = "com.unibo.ui"
     compileSdk = 35
 
+    buildFeatures{
+        viewBinding = true
+    }
     defaultConfig {
         minSdk = 24
 

@@ -1,4 +1,6 @@
 package com.unibo.data.di
 
-class RepositoryProviderImpl {
+import com.unibo.domain.di.RepositoryProvider
+
+class RepositoryProviderImpl: RepositoryProvider {
 }

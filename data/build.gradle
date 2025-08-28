@@ -31,6 +31,17 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+    // Retrofit
+    implementation libs.retrofit
+
+    // Moshi
+    implementation(libs.converter.moshi)
+    implementation(libs.moshi.kotlin)
+
+    //Room-Coroutines
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+
 
     implementation libs.androidx.core.ktx
     implementation libs.androidx.appcompat

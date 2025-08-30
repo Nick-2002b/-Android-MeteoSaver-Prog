@@ -1,11 +1,11 @@
 package com.unibo.data.repository
 
-import com.unibo.data.remote.WeatherApi
+import com.unibo.data.remote.WeatherApiService
 import com.unibo.domain.model.Weather
 import com.unibo.domain.repository.WeatherRepository
 import kotlinx.coroutines.flow.Flow
 
-class WeatherRepositoryImpl(private val weatherApi: WeatherApi) : WeatherRepository {
+class WeatherRepositoryImpl(private val weatherApiService: WeatherApiService) : WeatherRepository {
     override suspend fun getRemoteWeatherByCity(cityName: String): Result<Weather> {
         TODO("Not yet implemented")
     }

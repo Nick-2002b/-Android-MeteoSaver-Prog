@@ -7,5 +7,5 @@ import com.unibo.domain.repository.WeatherRepository
 
 class RepositoryProviderImpl: RepositoryProvider {
     private val retrofitClient = RetrofitClient()
-    override val weatherRepository: WeatherRepository = WeatherRepositoryImpl(weatherApi = retrofitClient.weatherApi)
+    override val weatherRepository: WeatherRepository = WeatherRepositoryImpl(weatherApiService = retrofitClient.weatherApiService)
 }

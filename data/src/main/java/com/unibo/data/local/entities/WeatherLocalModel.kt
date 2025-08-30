@@ -12,4 +12,5 @@ data class WeatherLocalModel(
     val humidity: Double,
     val windSpeed: Double,
     val feelsLike: Double,
+    val lastUpdate: Long = System.currentTimeMillis()
 )

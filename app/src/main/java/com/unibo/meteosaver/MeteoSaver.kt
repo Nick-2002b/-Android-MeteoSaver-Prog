@@ -9,7 +9,7 @@ class MeteoSaver: Application() {
         super.onCreate()
 
         UseCaseProvider.setup(
-            repositoryProvider = RepositoryProviderImpl()
+            repositoryProvider = RepositoryProviderImpl(context = this.applicationContext)
         )
     }
 }

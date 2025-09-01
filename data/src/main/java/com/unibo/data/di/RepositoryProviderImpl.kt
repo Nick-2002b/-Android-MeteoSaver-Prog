@@ -1,11 +1,15 @@
 package com.unibo.data.di
 
+import android.content.Context
 import com.unibo.data.remote.RetrofitClient
 import com.unibo.data.repository.WeatherRepositoryImpl
 import com.unibo.domain.di.RepositoryProvider
 import com.unibo.domain.repository.WeatherRepository
 
-class RepositoryProviderImpl: RepositoryProvider {
+class RepositoryProviderImpl(private val context: Context): RepositoryProvider {
     private val retrofitClient = RetrofitClient()
-    override val weatherRepository: WeatherRepository = WeatherRepositoryImpl(weatherApiService = retrofitClient.weatherApiService)
+    override val weatherRepository: WeatherRepository = WeatherRepositoryImpl(
+        weatherApiService = retrofitClient.weatherApiService,
+        context = context
+    )
 }

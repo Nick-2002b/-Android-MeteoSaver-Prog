@@ -9,7 +9,6 @@ import com.unibo.domain.model.Weather
 import com.unibo.domain.repository.WeatherRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -26,11 +25,19 @@ class WeatherRepositoryImpl(
 
     private val weatherDao = AppDatabase.getInstance(context = context).weatherDao()
 
+    init {
+        scope.launch {
+            weatherDao.getAllWeather().collect { entities ->
+                _weatherList.value = entities.map { it.toDomain() }
+            }
+        }
+    }
+
     override fun fetchRemoteWeatherByCity(cityName: String) {
         scope.launch {
             try {
                 val response = weatherApiService.getWeather(cityName, lang = "IT")
-                weatherDao.insertWeather(response.toEntity())
+                weatherDao.insertWeather(response.toWeatherLocalModel())
             } catch (e: Exception){
                 println("Error during data fetch: ${e.message}")
             }
@@ -38,7 +45,7 @@ class WeatherRepositoryImpl(
     }
 
     // Mapper to convert ApiResponse for saving into the DB
-    private fun ApiResponse.toEntity(): WeatherLocalModel {
+    private fun ApiResponse.toWeatherLocalModel(): WeatherLocalModel {
         return WeatherLocalModel(
             cityName = this.cityName ?: "Sconosciuta",
             icon = this.weather?.firstOrNull()?.icon?.let { iconCode -> "https://openweather.site/img/wn/$iconCode.png" }?: "",

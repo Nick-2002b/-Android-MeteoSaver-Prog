@@ -37,14 +37,6 @@ class WeatherRepositoryImpl(
         }
     }
 
-    override fun getSavedWeather(): Flow<List<Weather>> {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun saveWeatherLocation(weather: Weather) {
-        TODO("Not yet implemented")
-    }
-
     // Mapper to convert ApiResponse for saving into the DB
     private fun ApiResponse.toEntity(): WeatherLocalModel {
         return WeatherLocalModel(

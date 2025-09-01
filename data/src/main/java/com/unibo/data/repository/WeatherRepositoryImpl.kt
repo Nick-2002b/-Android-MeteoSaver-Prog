@@ -45,7 +45,7 @@ class WeatherRepositoryImpl(
         TODO("Not yet implemented")
     }
 
-    // MAPPERS
+    // Mapper to convert ApiResponse for saving into the DB
     private fun ApiResponse.toEntity(): WeatherLocalModel {
         return WeatherLocalModel(
             cityName = this.cityName ?: "Sconosciuta",
@@ -56,6 +56,19 @@ class WeatherRepositoryImpl(
             windSpeed = this.wind?.speed ?: 0.0,
             feelsLike = this.main?.feelsLike ?: 0.0,
             lastUpdate = System.currentTimeMillis(),
+        )
+    }
+
+    // Mapper to convert WeatherLocalModel to Weather Model for the UI
+    private fun WeatherLocalModel.toDomain(): Weather {
+        return Weather(
+            cityName = this.cityName,
+            icon = this.icon,
+            weatherDescription = this.weatherDescription,
+            temperature = this.temperature,
+            humidity = this.humidity,
+            windSpeed = this.windSpeed,
+            feelsLike = this.feelsLike,
         )
     }
 }

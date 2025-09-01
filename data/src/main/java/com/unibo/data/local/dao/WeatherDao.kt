@@ -6,12 +6,13 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.unibo.data.local.entities.WeatherLocalModel
 import com.unibo.domain.model.Weather
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface WeatherDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertWeather(weather: WeatherLocalModel)
+    fun insertWeather(weather: WeatherLocalModel)
 
     @Query("SELECT * FROM weather_locations ORDER BY lastUpdate DESC")
-    suspend fun getAllWeather(): List<Weather>
+    fun getAllWeather(): Flow<List<Weather>>
 }

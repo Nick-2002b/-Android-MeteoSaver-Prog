@@ -26,7 +26,7 @@ class WeatherRepositoryImpl(
 
     private val weatherDao = AppDatabase.getInstance(context = context).weatherDao()
 
-    override suspend fun getRemoteWeatherByCity(cityName: String): Result<Weather> {
+    override suspend fun getRemoteWeatherByCity(cityName: String) {
         scope.launch {
             try {
                 val response = weatherApiService.getWeather(cityName, lang = "IT")

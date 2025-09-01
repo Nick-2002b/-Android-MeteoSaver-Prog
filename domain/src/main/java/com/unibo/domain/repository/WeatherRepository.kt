@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.StateFlow
 interface WeatherRepository {
     val weatherList: StateFlow<List<Weather>>
 
-    suspend fun getRemoteWeatherByCity(cityName: String): Result<Weather>
+    suspend fun getRemoteWeatherByCity(cityName: String)
 
     fun getSavedWeather(): Flow<List<Weather>>
 

@@ -8,7 +8,7 @@ interface FetchRemoteWeatherUseCase {
 class FetchRemoteWeatherUseCaseImpl (
     private val repository: WeatherRepository
 ): FetchRemoteWeatherUseCase {
-    override fun invoke(cityName: String) {
-        repository.fetchRemoteWeatherByCity(cityName)
+    override fun invoke(location: String) {
+        repository.fetchRemoteWeatherByCity(location)
     }
 }

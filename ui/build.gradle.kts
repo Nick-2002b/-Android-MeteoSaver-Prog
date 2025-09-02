@@ -39,6 +39,8 @@ dependencies {
 
     implementation(project(":domain"))
 
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.3")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.3")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

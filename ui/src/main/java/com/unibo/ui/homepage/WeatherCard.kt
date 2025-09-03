@@ -80,7 +80,7 @@ fun WeatherCard(
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = false)
 @Composable
 fun WeatherCardPreview() {
     WeatherCard(

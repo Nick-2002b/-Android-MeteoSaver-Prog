@@ -9,7 +9,7 @@ import com.unibo.domain.usecases.RefreshAllCitiesUseCase
 
 class WeatherViewModelFactory (
     private val getWeather: GetWeatherListUseCase,
-    private val fetchRemoteWeather: FetchRemoteWeatherUseCase
+    private val fetchRemoteWeather: FetchRemoteWeatherUseCase,
     private val refreshAllCitiesUseCase: RefreshAllCitiesUseCase
 ): ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

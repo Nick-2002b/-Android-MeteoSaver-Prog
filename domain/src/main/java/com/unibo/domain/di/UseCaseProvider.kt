@@ -4,11 +4,13 @@ import com.unibo.domain.usecases.FetchRemoteWeatherUseCase
 import com.unibo.domain.usecases.FetchRemoteWeatherUseCaseImpl
 import com.unibo.domain.usecases.GetWeatherListUseCase
 import com.unibo.domain.usecases.GetWeatherListUseCaseImpl
+import com.unibo.domain.usecases.RefreshAllCitiesUseCase
+import com.unibo.domain.usecases.RefreshAllCitiesUseCaseImpl
 
 object UseCaseProvider {
     lateinit var fetchRemoteWeatherUseCase: FetchRemoteWeatherUseCase
     lateinit var getWeatherListUseCase: GetWeatherListUseCase
-
+    lateinit var refreshAllCitiesUseCase: RefreshAllCitiesUseCase
     fun setup(
         repositoryProvider: RepositoryProvider,
     ){
@@ -17,6 +19,9 @@ object UseCaseProvider {
         )
 
         getWeatherListUseCase = GetWeatherListUseCaseImpl(
+            repository = repositoryProvider.weatherRepository
+        )
+        refreshAllCitiesUseCase = RefreshAllCitiesUseCaseImpl(
             repository = repositoryProvider.weatherRepository
         )
 

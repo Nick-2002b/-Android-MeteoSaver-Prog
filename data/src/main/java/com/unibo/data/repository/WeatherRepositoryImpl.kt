@@ -44,6 +44,19 @@ class WeatherRepositoryImpl(
         }
     }
 
+    override fun refreshAllCities() {
+        scope.launch{
+            try{
+                val savedCities = weatherDao.getAllWeatherOnce()
+                savedCities.forEach { cityEntity ->
+                    val dto = weatherApiService.getWeather(city = cityEntity.cityName, lang = "IT")
+                }
+            } catch (e: Exception){
+                println("Errore durante il refresh di tutte le città: ${e.message}")
+            }
+        }
+    }
+
     // Mapper to convert ApiResponse for saving into the DB
     private fun ApiResponse.toWeatherLocalModel(): WeatherLocalModel {
         return WeatherLocalModel(

@@ -14,4 +14,7 @@ interface WeatherDao {
 
     @Query("SELECT * FROM weather_locations ORDER BY lastUpdate DESC")
     fun getAllWeather(): Flow<List<WeatherLocalModel>>
+
+    @Query("SELECT * FROM weather_locations")
+    suspend fun getAllWeatherOnce(): List<WeatherLocalModel>
 }

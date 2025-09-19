@@ -1,4 +1,4 @@
-package com.unibo.ui.compose.common
+package com.unibo.ui.common
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle

@@ -9,20 +9,17 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.pulltorefresh.PullToRefreshContainer
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.unibo.domain.model.Weather
+import com.unibo.ui.common.MeteoSaverAppBar
 import com.unibo.ui.common.PrimaryBtn
 import com.unibo.ui.compose.common.Loader
-import com.unibo.ui.compose.common.MeteoSaverAppBar
-
 
 
 
@@ -128,8 +125,7 @@ fun HomeScreenPreview() {
         )
 }
 
-
-
+/*
 @Preview(showBackground = true, widthDp = 360, heightDp = 640)
 @Composable
 fun HomeScreenLoadingPreview() {
@@ -139,4 +135,4 @@ fun HomeScreenLoadingPreview() {
             onItemClick = {},
             onRefresh = {},
         )
-}
+}*/

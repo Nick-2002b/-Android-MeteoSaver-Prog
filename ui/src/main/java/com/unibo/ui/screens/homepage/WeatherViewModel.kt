@@ -1,4 +1,4 @@
-package com.unibo.ui.homepage
+package com.unibo.ui.screens.homepage
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

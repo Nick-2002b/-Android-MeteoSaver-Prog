@@ -9,6 +9,8 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun MeteoSaverAppBar(
     title: String,
+    actions: @Composable () -> Unit = {},
+    navigationIcon: @Composable () -> Unit = {},
 ) {
     CenterAlignedTopAppBar(
     title = { Text(text = title,
@@ -17,6 +19,8 @@ fun MeteoSaverAppBar(
                     )
                 )
             },
+        navigationIcon = navigationIcon,
+        actions ={ actions() },
     colors = TopAppBarDefaults.topAppBarColors(
         containerColor = MaterialTheme.colorScheme.primaryContainer,
         titleContentColor = MaterialTheme.colorScheme.primary

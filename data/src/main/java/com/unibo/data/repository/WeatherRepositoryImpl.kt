@@ -57,6 +57,12 @@ class WeatherRepositoryImpl(
         }
     }
 
+    override suspend fun deleteCity(cityName: String) {
+        scope.launch {
+            weatherDao.deleteCityByName(cityName)
+        }
+    }
+
     // Mapper to convert ApiResponse for saving into the DB
     private fun ApiResponse.toWeatherLocalModel(): WeatherLocalModel {
         return WeatherLocalModel(

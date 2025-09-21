@@ -8,7 +8,7 @@ android {
     namespace = "com.unibo.ui"
     compileSdk = 36
 
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
     }
 
@@ -42,6 +42,7 @@ dependencies {
 
     implementation(project(":domain"))
 
+    implementation("androidx.navigation:navigation-compose:2.7.7")
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.material3)

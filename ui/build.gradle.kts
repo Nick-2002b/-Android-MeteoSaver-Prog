@@ -42,7 +42,6 @@ dependencies {
 
     implementation(project(":domain"))
 
-    implementation("androidx.constraintlayout:constraintlayout-compose:1.1.1")
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.material3)

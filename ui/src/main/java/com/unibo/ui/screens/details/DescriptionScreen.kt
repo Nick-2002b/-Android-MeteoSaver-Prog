@@ -18,12 +18,14 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.unibo.domain.model.Weather
 import com.unibo.ui.common.MeteoSaverAppBar
 import com.unibo.ui.common.PrimaryBtn
@@ -31,10 +33,14 @@ import com.unibo.ui.screens.homepage.WeatherViewModel
 
 @Composable
 fun DescriptionScreen (
+    cityName: String,
     weatherViewModel: WeatherViewModel,
     onBackClick: () -> Unit,
     ){
-
+    LaunchedEffect(key1 = cityName) {
+        weatherViewModel.loadCityDetails(cityName)
+    }
+    val selectedWeather = weatherViewModel.selectedWeather.collectAsStateWithLifecycle()
 }
 
 @Composable

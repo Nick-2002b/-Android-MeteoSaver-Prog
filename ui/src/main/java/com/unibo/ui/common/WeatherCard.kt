@@ -1,4 +1,4 @@
-package com.unibo.ui.screens.homepage
+package com.unibo.ui.common
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row

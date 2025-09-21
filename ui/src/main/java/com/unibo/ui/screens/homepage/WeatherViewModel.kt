@@ -8,6 +8,7 @@ import com.unibo.domain.usecases.GetWeatherListUseCase
 import com.unibo.domain.usecases.RefreshAllCitiesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class WeatherViewModel (
@@ -19,8 +20,8 @@ class WeatherViewModel (
     private val _weatherList = MutableStateFlow<List<Weather>>(listOf())
     val weatherList: StateFlow<List<Weather>> = _weatherList
 
-    private val _selectedWeather = MutableStateFlow<Weather>(listOf())
-    val selectedWeather: StateFlow<Weather> = _selectedWeather
+    private val _selectedWeather = MutableStateFlow<Weather?>(null)
+    val selectedWeather: StateFlow<Weather?> = _selectedWeather.asStateFlow()
 
     private val _showLoader = MutableStateFlow(false)
     val showLoader: StateFlow<Boolean> = _showLoader
@@ -29,6 +30,10 @@ class WeatherViewModel (
         observeWeatherList()
     }
 
+    fun loadCityDetails(cityName: String) {
+        val city = _weatherList.value.find { it.cityName == cityName}
+        _selectedWeather.value = city
+    }
     fun searchCity(cityName: String){
         fetchRemoteWeatherUseCase.invoke(cityName)
     }

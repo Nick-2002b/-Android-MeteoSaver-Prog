@@ -27,6 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import coil.compose.AsyncImage
 import com.unibo.domain.model.Weather
 import com.unibo.ui.common.MeteoSaverAppBar
 import com.unibo.ui.common.PrimaryBtn
@@ -87,11 +88,10 @@ fun DescriptionScreenLayout(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(
+                AsyncImage(
+                    model = weatherDesc.icon,
                     modifier = Modifier.size(80.dp),
-                    imageVector = Icons.Default.Build,
                     contentDescription = "Icona Meteo",
-                    tint = MaterialTheme.colorScheme.primary
                 )
                 Spacer(modifier = Modifier.width(16.dp))
                 Column {

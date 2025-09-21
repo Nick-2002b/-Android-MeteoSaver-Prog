@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import com.unibo.domain.model.Weather
 
 @Composable
@@ -53,8 +54,8 @@ fun WeatherCard(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     // TODO: Sostituire con un'icona dinamica
-                    Icon(
-                        imageVector = Icons.Default.Star,
+                    AsyncImage(
+                        model = weather.icon,
                         contentDescription = "Weather Icon",
                         modifier = Modifier.size(32.dp)
                     )

@@ -35,19 +35,19 @@ import com.unibo.ui.screens.homepage.WeatherViewModel
 @Composable
 fun DescriptionScreen (
     cityName: String,
-    weatherViewModel: WeatherViewModel,
+    descriptionViewModel: WeatherViewModel,
     onBackClick: () -> Unit,
     ){
     LaunchedEffect(key1 = cityName) {
-        weatherViewModel.loadCityDetails(cityName)
+        descriptionViewModel.loadCityDetails(cityName)
     }
-    val selectedWeather = weatherViewModel.selectedWeather.collectAsStateWithLifecycle()
+    val selectedWeather = descriptionViewModel.selectedWeather.collectAsStateWithLifecycle()
     selectedWeather.value?.let { weatherData ->
         DescriptionScreenLayout(
             weatherDesc = weatherData,
             onBackClick = onBackClick,
             onDeleteClick = {
-                weatherViewModel.deleteCity(weatherData.cityName)
+                descriptionViewModel.deleteCity(weatherData.cityName)
             }
         )
     } ?: run {

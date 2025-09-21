@@ -3,6 +3,7 @@ package com.unibo.ui.screens.homepage
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.unibo.domain.model.Weather
+import com.unibo.domain.usecases.DeleteCityUseCase
 import com.unibo.domain.usecases.FetchRemoteWeatherUseCase
 import com.unibo.domain.usecases.GetWeatherListUseCase
 import com.unibo.domain.usecases.RefreshAllCitiesUseCase
@@ -14,7 +15,8 @@ import kotlinx.coroutines.launch
 class WeatherViewModel (
     private val getWeatherListUseCase: GetWeatherListUseCase,
     private val fetchRemoteWeatherUseCase: FetchRemoteWeatherUseCase,
-    private val refreshAllCitiesUseCase: RefreshAllCitiesUseCase
+    private val refreshAllCitiesUseCase: RefreshAllCitiesUseCase,
+    private val deleteCityUseCase: DeleteCityUseCase
 ): ViewModel() {
 
     private val _weatherList = MutableStateFlow<List<Weather>>(listOf())
@@ -35,8 +37,8 @@ class WeatherViewModel (
         _selectedWeather.value = city
     }
 
-    fun deleteCity(cityName: String) {
-        TODO("Create UseCase")
+    suspend fun deleteCity(cityName: String) {
+        deleteCityUseCase.invoke(cityName)
     }
     fun searchCity(cityName: String){
         fetchRemoteWeatherUseCase.invoke(cityName)

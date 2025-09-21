@@ -17,4 +17,7 @@ interface WeatherDao {
 
     @Query("SELECT * FROM weather_locations")
     suspend fun getAllWeatherOnce(): List<WeatherLocalModel>
+
+    @Query("DELETE FROM weather_locations WHERE cityName = :cityName")
+    suspend fun deleteCityByName(cityName: String)
 }

@@ -7,5 +7,5 @@ interface WeatherRepository {
     val weatherList: StateFlow<List<Weather>>
     fun fetchRemoteWeatherByCity(cityName: String)
     fun refreshAllCities()
-    suspend fun deleteCity(cityName: String)
+    fun deleteCity(cityName: String)
 }

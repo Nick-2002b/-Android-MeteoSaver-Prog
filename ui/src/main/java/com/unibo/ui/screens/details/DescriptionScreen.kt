@@ -49,6 +49,7 @@ fun DescriptionScreen (
             onBackClick = onBackClick,
             onDeleteClick = {
                 descriptionViewModel.deleteCity(weatherData.cityName)
+                onBackClick()
             }
         )
     } ?: run {

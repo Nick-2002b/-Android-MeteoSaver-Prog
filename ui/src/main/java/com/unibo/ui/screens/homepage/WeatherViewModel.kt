@@ -37,7 +37,7 @@ class WeatherViewModel (
         _selectedWeather.value = city
     }
 
-    suspend fun deleteCity(cityName: String) {
+    fun deleteCity(cityName: String) {
         deleteCityUseCase.invoke(cityName)
     }
     fun searchCity(cityName: String){

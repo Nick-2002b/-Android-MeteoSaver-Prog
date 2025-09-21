@@ -85,7 +85,9 @@ fun WeatherCardPreview() {
             icon = "",
             humidity = 60.0,
             windSpeed = 15.0,
-            feelsLike = 22.0
+            feelsLike = 22.0,
+            tempMin = 15.0,
+            tempMax = 25.0
         ),
         onItemClick = {}
     )

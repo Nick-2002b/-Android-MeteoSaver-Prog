@@ -105,7 +105,9 @@ fun HomeScreenPreview() {
             icon = "",
             humidity = 55.0,
             windSpeed = 12.0,
-            feelsLike = 29.0
+            feelsLike = 29.0,
+            tempMin = 20.0,
+            tempMax = 30.0
         ),
         Weather(
             cityName = "Roma",
@@ -114,7 +116,9 @@ fun HomeScreenPreview() {
             icon = "",
             humidity = 80.0,
             windSpeed = 20.0,
-            feelsLike = 18.0
+            feelsLike = 18.0,
+            tempMin = 15.0,
+            tempMax = 25.0
         ),
         Weather(
             cityName = "Torino",
@@ -123,7 +127,9 @@ fun HomeScreenPreview() {
             icon = "",
             humidity = 80.0,
             windSpeed = 20.0,
-            feelsLike = 18.0
+            feelsLike = 18.0,
+            tempMin = 15.0,
+            tempMax = 25.0
         )
     )
 

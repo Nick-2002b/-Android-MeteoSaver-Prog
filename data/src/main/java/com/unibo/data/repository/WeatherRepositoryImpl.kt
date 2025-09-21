@@ -61,12 +61,15 @@ class WeatherRepositoryImpl(
     private fun ApiResponse.toWeatherLocalModel(): WeatherLocalModel {
         return WeatherLocalModel(
             cityName = this.cityName ?: "Sconosciuta",
-            icon = this.weather?.firstOrNull()?.icon?.let { iconCode -> "https://openweather.site/img/wn/$iconCode.png" }?: "",
+            icon = this.weather?.firstOrNull()?.icon?.let { iconCode -> "https://openweather.site/img/wn/$iconCode.png" }
+                ?: "",
             weatherDescription = this.weather?.firstOrNull()?.description ?: "N/D",
             temperature = this.main?.temperature ?: 0.0,
             humidity = this.main?.humidity ?: 0.0,
             windSpeed = this.wind?.speed ?: 0.0,
             feelsLike = this.main?.feelsLike ?: 0.0,
+            tempMin = this.main?.tempMin ?: 0.0,
+            tempMax = this.main?.tempMax ?: 0.0,
             lastUpdate = System.currentTimeMillis(),
         )
     }
@@ -78,6 +81,8 @@ class WeatherRepositoryImpl(
             icon = this.icon,
             weatherDescription = this.weatherDescription,
             temperature = this.temperature,
+            tempMin = this.tempMin,
+            tempMax = this.tempMax,
             humidity = this.humidity,
             windSpeed = this.windSpeed,
             feelsLike = this.feelsLike,

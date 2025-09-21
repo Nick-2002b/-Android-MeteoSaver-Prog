@@ -38,7 +38,7 @@ fun HomeScreen(
         weatherList = weatherList.value,
         isLoading = isLoading.value,
         onItemClick = onItemClick,
-        onRefresh = { viewModel.onRefresh()}
+        onRefresh = { viewModel.onRefresh()},
     )
 
     LaunchedEffect(key1 = Unit) {
@@ -53,7 +53,8 @@ fun HomeScreenLayout(
     weatherList: List<Weather>,
     isLoading: Boolean,
     onItemClick: (Weather) -> Unit,
-    onRefresh: () -> Unit
+    onRefresh: () -> Unit,
+    onAddCityClick: () -> Unit,
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
 
@@ -70,7 +71,7 @@ fun HomeScreenLayout(
         )
         PrimaryBtn(
             "Aggiungi Città",
-            onBtnClick = {},
+            onBtnClick = onAddCityClick,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),

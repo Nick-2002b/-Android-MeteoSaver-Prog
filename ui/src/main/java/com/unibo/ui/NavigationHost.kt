@@ -22,7 +22,8 @@ fun NavigationHost () {
     val factory = WeatherViewModelFactory(
         UseCaseProvider.getWeatherListUseCase,
         UseCaseProvider.fetchRemoteWeatherUseCase,
-        UseCaseProvider.refreshAllCitiesUseCase
+        UseCaseProvider.refreshAllCitiesUseCase,
+        UseCaseProvider.deleteCityUseCase
     )
     val weatherViewModel: WeatherViewModel = viewModel(factory = factory)
 

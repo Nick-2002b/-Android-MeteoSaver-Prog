@@ -1,6 +1,7 @@
 package com.unibo.ui.screens.details
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -41,6 +42,19 @@ fun DescriptionScreen (
         weatherViewModel.loadCityDetails(cityName)
     }
     val selectedWeather = weatherViewModel.selectedWeather.collectAsStateWithLifecycle()
+    selectedWeather.value?.let { weatherData ->
+        DescriptionScreenLayout(
+            weatherDesc = weatherData,
+            onBackClick = onBackClick,
+            onDeleteClick = {
+                weatherViewModel.deleteCity(weatherData.cityName)
+            }
+        )
+    } ?: run {
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            Text("Caricamento descrizione...")
+        }
+    }
 }
 
 @Composable

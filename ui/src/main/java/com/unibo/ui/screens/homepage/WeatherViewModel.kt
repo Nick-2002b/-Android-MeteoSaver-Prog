@@ -34,6 +34,10 @@ class WeatherViewModel (
         val city = _weatherList.value.find { it.cityName == cityName}
         _selectedWeather.value = city
     }
+
+    fun deleteCity(cityName: String) {
+        TODO("Create UseCase")
+    }
     fun searchCity(cityName: String){
         fetchRemoteWeatherUseCase.invoke(cityName)
     }

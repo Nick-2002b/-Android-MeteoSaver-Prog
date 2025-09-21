@@ -19,6 +19,9 @@ class WeatherViewModel (
     private val _weatherList = MutableStateFlow<List<Weather>>(listOf())
     val weatherList: StateFlow<List<Weather>> = _weatherList
 
+    private val _selectedWeather = MutableStateFlow<Weather>(listOf())
+    val selectedWeather: StateFlow<Weather> = _selectedWeather
+
     private val _showLoader = MutableStateFlow(false)
     val showLoader: StateFlow<Boolean> = _showLoader
 

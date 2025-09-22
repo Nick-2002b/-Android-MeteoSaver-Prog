@@ -1,5 +1,7 @@
 package com.unibo.domain.model
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Weather (
     val cityName: String,
     val icon: String,

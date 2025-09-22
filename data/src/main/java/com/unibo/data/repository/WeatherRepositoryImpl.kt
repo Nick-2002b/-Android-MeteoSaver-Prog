@@ -63,6 +63,10 @@ class WeatherRepositoryImpl(
         }
     }
 
+    private fun Double?.toCelsius(): Double {
+        val tempInFahrenheit = this ?: 32.0
+        return "%.1f".format((tempInFahrenheit - 32) * 5.0/9.0).toDouble()
+    }
     // Mapper to convert ApiResponse for saving into the DB
     private fun ApiResponse.toWeatherLocalModel(): WeatherLocalModel {
         return WeatherLocalModel(
@@ -70,12 +74,12 @@ class WeatherRepositoryImpl(
             icon = this.weather?.firstOrNull()?.icon?.let { iconCode -> "https://openweather.site/img/wn/$iconCode.png" }
                 ?: "",
             weatherDescription = this.weather?.firstOrNull()?.description ?: "N/D",
-            temperature = this.main?.temperature ?: 0.0,
+            temperature = this.main?.temperature.toCelsius(),
             humidity = this.main?.humidity ?: 0.0,
             windSpeed = this.wind?.speed ?: 0.0,
-            feelsLike = this.main?.feelsLike ?: 0.0,
-            tempMin = this.main?.tempMin ?: 0.0,
-            tempMax = this.main?.tempMax ?: 0.0,
+            feelsLike = this.main?.feelsLike.toCelsius(),
+            tempMin = this.main?.tempMin.toCelsius(),
+            tempMax = this.main?.tempMax.toCelsius(),
             lastUpdate = System.currentTimeMillis(),
         )
     }

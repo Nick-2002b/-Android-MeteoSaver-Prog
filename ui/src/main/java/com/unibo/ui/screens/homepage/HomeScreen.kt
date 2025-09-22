@@ -10,11 +10,19 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -34,12 +42,56 @@ fun HomeScreen(
 ){
     val weatherList = viewModel.weatherList.collectAsStateWithLifecycle()
     val isLoading = viewModel.showLoader.collectAsStateWithLifecycle()
+
+    var showDialog by remember { mutableStateOf(false) }
+    var cityNameInput by remember { mutableStateOf("") }
+
     HomeScreenLayout(
         weatherList = weatherList.value,
         isLoading = isLoading.value,
         onItemClick = onItemClick,
         onRefresh = { viewModel.onRefresh()},
+        onAddCityClick = { showDialog = true }
     )
+    if(showDialog) {
+        AlertDialog(
+            onDismissRequest = {
+                showDialog = false
+                cityNameInput = ""
+            },
+            title = { Text(text = "Aggiungi una nuova città") },
+            text = {
+                OutlinedTextField(
+                    value = cityNameInput,
+                    onValueChange = { cityNameInput = it },
+                    label = { Text("Nome della città") },
+                )
+            },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        if (cityNameInput.isNotBlank()){
+                            viewModel.searchCity(cityNameInput)
+                        }
+                        showDialog = false
+                        cityNameInput = ""
+                    }
+                ) {
+                    Text("Aggiungi")
+                }
+            },
+            dismissButton = {
+                Button(
+                    onClick = {
+                        showDialog = false
+                        cityNameInput = ""
+                    }
+                ) {
+                    Text("Annulla")
+                }
+            },
+        )
+    }
 
     LaunchedEffect(key1 = Unit) {
         viewModel.searchCity(cityName = "Milano")
@@ -136,11 +188,12 @@ fun HomeScreenPreview() {
     )
 
     HomeScreenLayout(
-            weatherList = fakeWeatherList,
-            isLoading = false,
-            onItemClick = {},
-            onRefresh = {}
-        )
+        weatherList = fakeWeatherList,
+        isLoading = false,
+        onItemClick = {},
+        onRefresh = {},
+        onAddCityClick = {}
+    )
 }
 
 /*

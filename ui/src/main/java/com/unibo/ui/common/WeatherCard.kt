@@ -1,5 +1,7 @@
 package com.unibo.ui.common
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -7,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 //import androidx.compose.material.icons.filled.KeyboardArrowRight
@@ -53,12 +56,18 @@ fun WeatherCard(
                 Row(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    // TODO: Sostituire con un'icona dinamica
-                    AsyncImage(
-                        model = weather.icon,
-                        contentDescription = "Weather Icon",
-                        modifier = Modifier.size(32.dp)
-                    )
+                    Box(
+                        modifier = Modifier
+                            .clip(CircleShape)
+                            .background(MaterialTheme.colorScheme.secondaryContainer),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        AsyncImage(
+                            model = weather.icon,
+                            contentDescription = "Icona Meteo",
+                            modifier = Modifier.size(32.dp)
+                        )
+                    }
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
                         text = "${weather.temperature}°C",

@@ -83,10 +83,9 @@ fun DescriptionScreenLayout(
         Column (
             modifier = Modifier.fillMaxSize()
                 .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Spacer(modifier = Modifier.height(32.dp))
-
+            Spacer(modifier = Modifier.weight(0.5f))
             Row (modifier = Modifier
                 .fillMaxWidth(),
                 horizontalArrangement = Arrangement.Center,
@@ -122,7 +121,7 @@ fun DescriptionScreenLayout(
 
             Column (modifier = Modifier.fillMaxWidth(0.8f),
                 verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                val detailTextStyle = MaterialTheme.typography.headlineSmall.copy(fontSize = 20.sp)
+                val detailTextStyle = MaterialTheme.typography.headlineSmall.copy(fontSize = 25.sp)
                 Text(
                     text = "Umidità: ${weatherDesc.humidity}%",
                     style = detailTextStyle,
@@ -151,7 +150,7 @@ fun DescriptionScreenLayout(
     }
 }
 
-@Preview (showBackground = true, widthDp = 360, heightDp = 640)
+@Preview (showBackground = true)
 @Composable
 fun DescriptionScreenPreview() {
     DescriptionScreenLayout (

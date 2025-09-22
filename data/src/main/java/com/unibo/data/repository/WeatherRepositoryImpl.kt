@@ -49,7 +49,9 @@ class WeatherRepositoryImpl(
             try{
                 val savedCities = weatherDao.getAllWeatherOnce()
                 savedCities.forEach { cityEntity ->
-                    val dto = weatherApiService.getWeather(city = cityEntity.cityName, lang = "IT")
+                    val updatedDto = weatherApiService.getWeather(city = cityEntity.cityName, lang = "IT")
+                    val updatedEntity = updatedDto.toWeatherLocalModel()
+                    weatherDao.insertWeather(updatedEntity)
                 }
             } catch (e: Exception){
                 println("Errore durante il refresh di tutte le città: ${e.message}")

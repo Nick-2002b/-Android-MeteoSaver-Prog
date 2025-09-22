@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.unibo.data.local.dao.WeatherDao
 import com.unibo.data.local.entities.WeatherLocalModel
 
-@Database(entities = [WeatherLocalModel::class], version = 1)
+@Database(entities = [WeatherLocalModel::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun weatherDao(): WeatherDao
@@ -22,7 +22,8 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "meteosaver_database"
-                ).build()
+                ).fallbackToDestructiveMigration()
+                    .build()
                 INSTANCE = instance
                 instance
             }

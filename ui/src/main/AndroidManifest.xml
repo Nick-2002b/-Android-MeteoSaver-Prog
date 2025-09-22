@@ -4,11 +4,10 @@
 
     <application>
         <activity
-            android:name="com.unibo.ui.homepage.MainActivity"
+            android:name="com.unibo.ui.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -92,10 +92,6 @@ fun HomeScreen(
             },
         )
     }
-
-    LaunchedEffect(key1 = Unit) {
-        viewModel.searchCity(cityName = "Milano")
-    }
 }
 
 // Function to create the HomeScreen layout

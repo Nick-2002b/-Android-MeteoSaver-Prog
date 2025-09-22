@@ -57,7 +57,7 @@ class WeatherRepositoryImpl(
         }
     }
 
-    override suspend fun deleteCity(cityName: String) {
+    override fun deleteCity(cityName: String) {
         scope.launch {
             weatherDao.deleteCityByName(cityName)
         }

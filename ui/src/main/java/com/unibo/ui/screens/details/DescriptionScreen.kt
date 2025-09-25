@@ -38,6 +38,7 @@ import com.unibo.ui.common.MeteoSaverAppBar
 import com.unibo.ui.common.PrimaryBtn
 import com.unibo.ui.screens.homepage.WeatherViewModel
 import com.unibo.ui.R
+import com.unibo.ui.compose.common.Loader
 
 @Composable
 fun DescriptionScreen (
@@ -59,9 +60,7 @@ fun DescriptionScreen (
             }
         )
     } ?: run {
-        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            Text(stringResource(R.string.loading_details))
-        }
+        Loader()
     }
 }
 

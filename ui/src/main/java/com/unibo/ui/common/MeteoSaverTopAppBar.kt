@@ -1,9 +1,13 @@
 package com.unibo.ui.common
+
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.integerResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
+import com.unibo.ui.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -15,7 +19,7 @@ fun MeteoSaverAppBar(
     CenterAlignedTopAppBar(
     title = { Text(text = title,
         style = TextStyle(
-            fontSize = 26.sp,
+            fontSize = integerResource(id = R.integer.app_name_size).sp,
                     )
                 )
             },

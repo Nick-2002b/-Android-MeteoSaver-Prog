@@ -18,20 +18,21 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.unibo.domain.model.Weather
 import com.unibo.ui.common.MeteoSaverAppBar
 import com.unibo.ui.common.PrimaryBtn
 import com.unibo.ui.common.WeatherCard
 import com.unibo.ui.compose.common.Loader
+import com.unibo.ui.R
 
 
 
@@ -59,12 +60,12 @@ fun HomeScreen(
                 showDialog = false
                 cityNameInput = ""
             },
-            title = { Text(text = "Aggiungi una nuova città") },
+            title = { Text(text = stringResource(id = R.string.add_new_city))},
             text = {
                 OutlinedTextField(
                     value = cityNameInput,
                     onValueChange = { cityNameInput = it },
-                    label = { Text("Nome della città") },
+                    label = { Text(stringResource(id = R.string.dialog_city_name)) },
                 )
             },
             confirmButton = {
@@ -77,7 +78,7 @@ fun HomeScreen(
                         cityNameInput = ""
                     }
                 ) {
-                    Text("Aggiungi")
+                    Text(stringResource(id = R.string.add_btn))
                 }
             },
             dismissButton = {
@@ -87,7 +88,7 @@ fun HomeScreen(
                         cityNameInput = ""
                     }
                 ) {
-                    Text("Annulla")
+                    Text(stringResource(R.string.cancel_btn))
                 }
             },
         )
@@ -107,22 +108,22 @@ fun HomeScreenLayout(
     Column(modifier = Modifier.fillMaxSize()) {
 
         MeteoSaverAppBar(
-            title = "MeteoSaver",
+            title = stringResource(id = R.string.app_name),
             actions = {
                 IconButton(onClick = onRefresh) {
                     Icon(
                         imageVector = Icons.Default.Refresh,
-                        contentDescription = "Aggiorna dati meteo",
+                        contentDescription = stringResource(id = R.string.update_weather_data),
                     )
                 }
             }
         )
         PrimaryBtn(
-            "Aggiungi Città",
+            stringResource(id = R.string.add_city_btn),
             onBtnClick = onAddCityClick,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
+                .padding(dimensionResource(id = R.dimen.spacing_medium)),
         )
         if (isLoading && weatherList.isEmpty()) {
             Loader()
@@ -130,8 +131,8 @@ fun HomeScreenLayout(
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize(),
-            contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp)
+            contentPadding = PaddingValues(dimensionResource(id = R.dimen.spacing_medium)),
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.weatherCard_spacing))
 
         ) {
             items(weatherList) { weather ->

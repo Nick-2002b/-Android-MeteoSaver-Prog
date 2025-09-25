@@ -1,3 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MeteoSaver</string>
+
+    <string name="humidity">Umidità: %1$s %%</string>
+    <string name="wind">Vento: %1$.1f km/h</string>
+    <string name="temp">Min: %1$.1f°C Max: %2$.1f°C</string>
+    <string name="feels_like">Percepita: %1$.1f°C</string>
+    <string name="delete_City">Elimina città</string>
+    <string name="add_new_city">Aggiungi una nuova città</string>
+    <string name="dialog_city_name">Nome della città</string>
+    <string name="add_btn">Aggiungi</string>
+    <string name="cancel_btn">Annulla</string>
+    <string name="go_back_btn">Torna indietro</string>
+    <string name="weather_icon_desc">Icona meteo</string>
+    <string name="loading_details">Caricamento descrizione...</string>
+    <string name="update_weather_data">Aggiorna dati meteo</string>
+    <string name="add_city_btn">Aggiungi Città</string>
 </resources>

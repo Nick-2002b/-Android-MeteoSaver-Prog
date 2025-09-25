@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Build
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -26,6 +25,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.integerResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -35,6 +37,7 @@ import com.unibo.domain.model.Weather
 import com.unibo.ui.common.MeteoSaverAppBar
 import com.unibo.ui.common.PrimaryBtn
 import com.unibo.ui.screens.homepage.WeatherViewModel
+import com.unibo.ui.R
 
 @Composable
 fun DescriptionScreen (
@@ -57,7 +60,7 @@ fun DescriptionScreen (
         )
     } ?: run {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            Text("Caricamento descrizione...")
+            Text(stringResource(R.string.loading_details))
         }
     }
 }
@@ -75,13 +78,14 @@ fun DescriptionScreenLayout(
                 IconButton(onClick = onBackClick) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = "Torna indietro",
+                        contentDescription = stringResource(id = R.string.go_back_btn),
                     )
                 }
             }
         )
         Column (
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
@@ -93,15 +97,15 @@ fun DescriptionScreenLayout(
             ) {
                 Box(
                     modifier = Modifier
-                        .size(80.dp)
+                        .size(dimensionResource(id = R.dimen.description_icon_size))
                         .clip(CircleShape)
                         .background(MaterialTheme.colorScheme.secondaryContainer),
                     contentAlignment = Alignment.Center
                 ) {
                     AsyncImage(
                         model = weatherDesc.icon,
-                        contentDescription = "Icona Meteo",
-                        modifier = Modifier.size(80.dp)
+                        contentDescription = stringResource(id = R.string.weather_icon_desc),
+                        modifier = Modifier.size(dimensionResource(id = R.dimen.description_icon_size))
                     )
                 }
                 Spacer(modifier = Modifier.width(16.dp))
@@ -121,27 +125,29 @@ fun DescriptionScreenLayout(
 
             Column (modifier = Modifier.fillMaxWidth(0.8f),
                 verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                val detailTextStyle = MaterialTheme.typography.headlineSmall.copy(fontSize = 25.sp)
+                val detailTextStyle = MaterialTheme.typography.headlineSmall.copy(
+                    fontSize = integerResource(id = R.integer.detail_text_font_size).sp
+                )
                 Text(
-                    text = "Umidità: ${weatherDesc.humidity}%",
+                    text = stringResource(id = R.string.humidity, weatherDesc.humidity),
                     style = detailTextStyle,
                 )
                 Text(
-                    text = "Vento: ${weatherDesc.windSpeed} km/h",
+                    text = stringResource(id = R.string.wind, weatherDesc.windSpeed),
                     style = detailTextStyle,
                 )
                 Text(
-                    text = "Min: ${weatherDesc.tempMin}°C Max: ${weatherDesc.tempMax}°C",
+                    text = stringResource(id = R.string.temp, weatherDesc.tempMin, weatherDesc.tempMax),
                     style = detailTextStyle,
                 )
                 Text(
-                    text = "Percepita: ${weatherDesc.feelsLike}°C",
+                    text = stringResource(id = R.string.feels_like, weatherDesc.feelsLike),
                     style = detailTextStyle,
                 )
             }
             Spacer(modifier = Modifier.weight(1f))
             PrimaryBtn(
-                btnName = "ELIMINA CITTÀ",
+                btnName = stringResource(R.string.delete_City),
                 onBtnClick = onDeleteClick,
                 backgroundColor = MaterialTheme.colorScheme.error,
                 contentColor = MaterialTheme.colorScheme.onError

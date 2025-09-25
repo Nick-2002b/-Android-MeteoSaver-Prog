@@ -23,10 +23,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.unibo.domain.model.Weather
+import com.unibo.ui.R
 
 @Composable
 fun WeatherCard(
@@ -36,13 +38,13 @@ fun WeatherCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(8.dp))
+            .clip(RoundedCornerShape(dimensionResource(id = R.dimen.spacing_small)))
             .clickable { onItemClick(weather) }
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
+                .padding(dimensionResource(id = R.dimen.spacing_medium)),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column(
@@ -65,10 +67,10 @@ fun WeatherCard(
                         AsyncImage(
                             model = weather.icon,
                             contentDescription = "Icona Meteo",
-                            modifier = Modifier.size(32.dp)
+                            modifier = Modifier.size(dimensionResource(id = R.dimen.spacing_large))
                         )
                     }
-                    Spacer(modifier = Modifier.width(8.dp))
+                    Spacer(modifier = Modifier.width(dimensionResource(id = R.dimen.spacing_small)))
                     Text(
                         text = "${weather.temperature}°C",
                         style = MaterialTheme.typography.headlineMedium
@@ -78,7 +80,7 @@ fun WeatherCard(
             Icon(
                 imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                 contentDescription = "Go to details",
-                modifier = Modifier.size(32.dp)
+                modifier = Modifier.size(dimensionResource(id = R.dimen.spacing_large))
             )
         }
     }

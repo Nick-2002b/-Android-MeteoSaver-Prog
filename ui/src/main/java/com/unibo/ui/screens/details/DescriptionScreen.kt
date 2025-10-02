@@ -110,7 +110,7 @@ fun DescriptionScreenLayout(
                 Spacer(modifier = Modifier.width(16.dp))
                 Column {
                     Text(
-                        text = "${weatherDesc.temperature}°C",
+                        text = "%.1f°C".format(weatherDesc.temperature),
                         style = MaterialTheme.typography.displayLarge,
                     )
                     Text(

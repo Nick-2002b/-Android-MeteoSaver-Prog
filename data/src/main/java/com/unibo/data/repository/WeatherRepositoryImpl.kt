@@ -67,7 +67,7 @@ class WeatherRepositoryImpl(
 
     private fun Double?.toCelsius(): Double {
         val tempInFahrenheit = this ?: 32.0
-        return "%.1f".format((tempInFahrenheit - 32) * 5.0/9.0).toDouble()
+        return (tempInFahrenheit - 32) * 5.0/9.0
     }
     // Mapper to convert ApiResponse for saving into the DB
     private fun ApiResponse.toWeatherLocalModel(): WeatherLocalModel {

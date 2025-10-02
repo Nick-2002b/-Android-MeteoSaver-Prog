@@ -72,7 +72,7 @@ fun WeatherCard(
                     }
                     Spacer(modifier = Modifier.width(dimensionResource(id = R.dimen.spacing_small)))
                     Text(
-                        text = "${weather.temperature}°C",
+                        text = "%.1f°C".format(weather.temperature),
                         style = MaterialTheme.typography.headlineMedium
                     )
                 }
